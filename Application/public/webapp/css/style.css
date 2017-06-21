@@ -101,6 +101,18 @@ h5 {
   top: 100%;
   z-index: 1000;
 }
+.middle-boxTop{
+    margin-top: 50px!important;
+}
+.loginscreen{
+  border: 1px solid #7d7b7b;
+  border-radius: 5px;
+  padding: 25px;
+  color: #000;
+}
+.loginbg{
+  background: url("../AppImage/login_banner.jpg") center;
+}
 .dropdown-menu > li > a {
   border-radius: 3px;
   color: inherit;

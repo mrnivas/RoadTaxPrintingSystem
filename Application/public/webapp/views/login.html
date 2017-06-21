@@ -1,30 +1,48 @@
-<div class="middle-box text-center loginscreen  animated fadeInDown">
+<div class="middle-box middle-boxTop text-center   animated fadeInDown " >
 
     <div>
-        
-        <form class="m-t" role="form" ng-submit="Login()" ng-controller="authenticationController">
-		
-            <div class="form-group">
-            
-                <input type="text" class="form-control" placeholder="Username" required="" 
-                ng-model="Username">
 
-            </div>
+        <div style="background: #fff">
 
-            <div class="form-group">
+          <img src="http://localhost:8000/webapp/AppImage/theme_logo.png">
 
-                <input type="password" class="form-control" placeholder="Password" required="" 
-                ng-model="Password">
+        </div>
 
-            </div>
-			
-            <button type="submit" class="btn btn-primary block full-width m-b" >Login</button>
+        <p class="m-t">Sign int to portal</p>
 
-            <a ui-sref="forgot_password" class="white"><small>Forgot password?</small></a> 
-			
-        </form>
+        <div class="loginscreen">
 
-        <p class="m-t white"> <small>UDS &copy; 2014</small> </p>
+            <form class="m-t" role="form" ng-submit="Login()" ng-controller="authenticationController">
+
+                <div class="form-group text-left">
+
+                    <label >Username</label>
+
+                    <input type="text" class="form-control" placeholder="Username" required=""
+                           ng-model="Username">
+
+                </div>
+
+                <div class="form-group text-left">
+
+                    <label >Password</label>
+
+                    <input type="password" class="form-control" placeholder="Password" required=""
+                           ng-model="Password">
+
+                </div>
+
+                <button type="submit" class="btn btn-primary block full-width m-b" >Login</button>
+
+                <a ui-sref="forgot_password" class=""><small>Forgot password?</small></a>
+
+            </form>
+
+            <p class="m-t "> <small> &copy; 2014</small> </p>
+
+        </div>
+
+
 		
     </div>
 
