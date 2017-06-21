@@ -1,0 +1,205 @@
+<div ng-controller="ManageLocations">
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="">
+
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    <form role="form" name="locationForm">
+
+                        <div class="row">
+
+                            <div class="col-lg-6">
+
+                                <div class="form-group"><label>Choose Parent</label>
+                                    <select class="form-control" name="parentLocation">
+                                        <option value="-1">Is Parent</option>
+                                        <option value="-1">North</option>
+                                        <option value="-1">East</option>
+                                        <option value="-1">West</option>
+                                        <option value="-1">South</option>
+                                        <option value="-1">South > Tamilnadu</option>
+                                        <option value="-1">South > Tamilnadu > Chennai</option>
+                                        <option value="-1">South > Tamilnadu > Coimbatore</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6">
+
+                                <div class="form-group"><label>Location</label> <input type="text" placeholder="Location" class="form-control" name="locationName" ng-model="locationName" required></div>
+
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <button class="btn btn-sm btn-primary  m-t-n-xs" type="submit" ng-disabled="locationForm.locationName.$dirty && locationForm.locationName.$invalid"><strong>Save</strong></button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-3">
+
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-title"> <h5>Regions</h5>
+
+                        <div class="ibox-tools">
+                            <a class="delete-link">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+
+                                    <th></th>
+                                    <th>Region Name </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                    <td>Region 1</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 2</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 3</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 4</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title"><h5>Branches</h5>
+
+                        <div class="ibox-tools">
+                            <a class="delete-link">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="ibox-content">
+
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Branch Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                    <td>Region 1 <small><i class="fa fa-chevron-right"></i> </small> Branch 1</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 2 <small><i class="fa fa-chevron-right"></i> </small>  Branch 1</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 3 <small><i class="fa fa-chevron-right"></i> </small> Branch 1</td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 4 <small><i class="fa fa-chevron-right"></i> </small> Branch 1</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title"><h5>Locations</h5>
+
+                        <div class="ibox-tools">
+                            <a class="delete-link">
+                                <i class="fa fa-trash red"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                    <td>Region 1 <small><i class="fa fa-chevron-right"></i> </small>Branch 1 <small><i class="fa fa-chevron-right"></i> </small> Location 1</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 2 <small><i class="fa fa-chevron-right"></i> </small> Branch 1 <small><i class="fa fa-chevron-right"></i> </small> Location 1</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 3 <small><i class="fa fa-chevron-right"></i> </small> Branch 1 <small><i class="fa fa-chevron-right"></i> </small> Location 1</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                    <td>Region 4 <small><i class="fa fa-chevron-right"></i> </small> Branch 1 <small><i class="fa fa-chevron-right"></i> </small> Location 1</td>
+                                    <td><i class="fa fa-check"></i></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

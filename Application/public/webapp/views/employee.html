@@ -1,0 +1,276 @@
+<div ng-controller="ManageEmployees" >
+
+    <div class="row white-bg padding10top padding10bottom">
+
+            <form role="form" name="searchHub" >
+
+                <div class="col">
+
+                    <div class="col col-lg-5">
+
+                        <input type="text" class="form-control" ng-model="searchEmp.employee_first_name" placeholder="Search Name">
+
+                    </div>
+
+                    <div class="col col-lg-5">
+
+                        <input type="text" class="form-control" ng-model="searchEmp.employee_code" placeholder="Search Employee Id">
+
+                    </div> 
+                    <div class="col col-lg-2">
+
+                         <button type="button"  class="btn btn-primary  btn-block " data-toggle="modal" ng-click="crud.new()" > <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create Employee</button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+    </div>
+
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+            <!-- Grid Area -->
+
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Employee Id</th> 
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="vert-align" ng-repeat="Emp in Employees | filter:searchEmp">
+ 
+                                    <td>{{Emp.employee_first_name}} &nbsp;{{ Emp.employee_last_name}}</td>
+                                    <td>{{Emp.employee_code}}</td>
+                                    <td>{{Emp.email}}</td>
+                                    <td>{{Emp.phone}}</td>
+                                    <td>{{Emp.city}}</td>
+                                    <td>{{Emp.state}}</td>
+                                    <td>{{Emp.status_text}}</td>
+                                    <td>
+                                        
+                                        <div class="input-group">
+
+                                            <span class="input-group-btn">
+
+                                                <Button type="button" class="btn btn-default btn-sm" ng-click="crud.changeStatus(subService.id)"><span class="fa fa-eye" aria-hidden="true"></span></Button>
+
+                                                <Button type="button" class="btn btn-default btn-sm" ng-click="crud.edit(Emp.id)"><span class="fa fa-pencil" aria-hidden="true"></span></Button>
+
+                                                <Button type="button"  class="btn btn-default btn-sm"  ng-click="crud.delete(Emp.id)"><span class="fa fa-times" aria-hidden="true"></span></Button>
+                                            
+                                            </span>
+                                            
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ENd Grid Area -->
+
+            <!-- Model for create form -->
+
+            <!-- Confirm Boxes -->
+
+            <script type="text/ng-template" id="form.html">
+
+                <form role="form" name="form.createHubForm" >
+
+                    <div class="modal-header">
+                        <h3 class="modal-title"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;&nbsp;{{title}}</h3>
+                    </div>
+
+                    <div class="modal-body">
+                         
+                        <div class="alert alert-danger" style="display:{{ErrorDisplay}}">
+ 
+                             <strong class="animated glyphicon glyphicon-ban-circle"></strong> {{Error}} 
+ 
+                        </div>
+
+                        <div class="animated alert alert-info" style="display:{{LoadingDisplay}}">
+
+                                {{LoadingDisplay}}
+ 
+                        </div>
+
+                        <div style="display:{{formStatus}}">
+
+                            <div class="row">
+
+                                <div class="col-lg-4"><div class="form-group"><label>Employee Firstname</label> <input type="text" class="form-control" ng-model="model.frmEmployeeFirstName" required></div></div>
+
+                                <div class="col-lg-4"><div class="form-group"><label>Employee Lastname</label> <input type="text" class="form-control" ng-model="model.frmEmployeeLastName" required></div></div>
+
+                                <div class="col-lg-4"><div class="form-group"><label>Employee Code</label><input type="text" class="form-control" ng-model="model.frmEmployeeCode" required></div></div>                               
+
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-lg-4"><div class="form-group"><label>Gender</label>
+                                        <select class="form-control" ng-model="model.frmEmployeeGender" required>
+                                                <option value="">Select Gender</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                        </select>      
+                                </div></div>
+
+                                <div class="col-lg-4"><div class="form-group"><label>Email</label><input type="text" class="form-control" ng-model="model.frmEmployeeEmail" required></div></div>
+
+                                <div class="col-lg-4"><div class="form-group"><label>Phone</label><input type="text" class="form-control" ng-model="model.frmEmployeePhone" required></div></div>
+
+ 
+                            </div>
+
+                            <div class="row">
+
+                               <div class="col-lg-4"><div class="form-group"><label>Date of join</label> 
+
+                                             <p class="input-group"> 
+
+                                                  <input type="text" class="form-control" 
+                                                      uib-datepicker-popup="{{format}}" ng-model="model.doj" 
+                                                      is-open="doj.opened" datepicker-options="dateOptions"
+                                                      ng-required="true" close-text="Close"  />
+
+                                                  <span class="input-group-btn">
+
+                                                   <button type="button" class="btn btn-default" 
+                                                   ng-click="dojpick()"><i class="glyphicon glyphicon-calendar"></i></button>
+
+                                                  </span>
+                                             </p>
+
+                               </div></div>
+
+                               <div class="col-lg-4"><div class="form-group"><label>Date of Birth</label> 
+
+                                             <p class="input-group"> 
+                                                
+
+                                                  <input type="text" class="form-control" 
+                                                      uib-datepicker-popup="{{format}}" ng-model="model.dob" 
+                                                      is-open="dob.opened" datepicker-options="dateOptions"
+                                                      ng-required="true" close-text="Close"  />
+
+                                                  <span class="input-group-btn">
+
+                                                   <button type="button" class="btn btn-default" 
+                                                   ng-click="dobpick()"><i class="glyphicon glyphicon-calendar"></i></button>
+
+                                                  </span>
+                                             </p>
+
+                               </div></div>
+
+                                <div class="col-lg-4"><div class="form-group"><label>City</label><input type="text" class="form-control" ng-model="model.frmEmployeeCity" required></div></div>
+
+
+                                
+                                 
+
+
+                            </div>
+ 
+                            <div class="row">
+
+                                 <div class="col-lg-4"><div class="form-group"><label>State</label>
+                                        <select class="form-control" ng-model="model.frmEmployeeState" required>
+                                                <option value="">Select State</option>
+
+                                                 <option ng-repeat="state in states" value="{{state.StateName}}">{{state.StateName}}</option>
+
+                                        </select>      
+                                 </div></div>
+
+                                 <div class="col-lg-4"><div class="form-group"><label>Address</label><input type="text" class="form-control" ng-model="model.frmEmployeeAddress" required></div></div>
+
+                                 <div class="col-lg-4"><div class="form-group"><label>Pincode</label><input type="text" class="form-control" ng-model="model.frmEmployeePincode" required></div></div>
+
+
+                                
+
+                            </div>
+
+                            <div class="row">
+                                
+                                 <div class="col-lg-4"><div class="form-group"><label>Status</label>
+                                        <select class="form-control" ng-model="model.frmEmployeeStatus" required>
+                                                <option value="">Select Status</option>
+                                                <option value="0">Disable</option>
+                                                <option value="1">Active</option>
+                                        </select>      
+                                 </div></div>
+                                 
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button class="btn btn-primary" type="button" ng-click="save()">Save</button>
+                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                    
+                    </div>
+
+                </form>
+
+            </script> 
+
+            <!-- end Model -->
+
+
+        <!-- Confirm Boxes -->
+
+        <script type="text/ng-template" id="alert.html">
+            
+            <div class="modal-header">
+                <h3 class="modal-title">{{title}}</h3>
+            </div>
+
+            <div class="modal-body">
+                    {{msg}} 
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="close()">Cancel</button>
+            </div>
+
+        </script>
+
+        <!-- End COnfirm Boxes -->
+
+
+
+    </div>
+
+</div>
