@@ -36,10 +36,16 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpPr
         //    controller:"DashboardController"
         })
         .state('index.users', {
-            url: "/users"
-            ,templateUrl: "views/users.html"
-            ,data: { pageTitle: 'Manage User' }
-            ,controller:"ManageUsers"
+            url: "/users" ,
+            templateUrl: "views/user/users.html",
+            data: { pageTitle: 'Manage User' },
+            controller:"ManageUsers"
+        })
+        .state('index.roles', {
+            url: "/roles",
+            templateUrl: "views/user/roles.html",
+            data: { pageTitle: 'Manage Roles' },
+            controller:"ManageRoles"
         })
 }
 angular
